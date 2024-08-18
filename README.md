@@ -20,7 +20,7 @@ Written from scratch, it is primarily made for standalone SDDM, aiming to be cus
 
 **This guide only covers manual installation on desktop environments other than KDE Plasma for now**
 
-1- Once you have downloaded the tarball through the releases tab, extract it to the SDDM theme directory *(change the archive name if needed)*:
+1- Once you have downloaded the tarball through the releases tab, extract it to the SDDM theme directory *(change the archive path if needed)*:
 
 ```
 $ sudo tar -xzvf ~/sequoia.tar.gz -C /usr/share/sddm/themes
@@ -37,7 +37,7 @@ Current=sequoia
 
 ### Testing
 
-You can easily try out themes without changing your SDDM config or repeatedly login out using this command:
+You can easily try out themes without changing your SDDM config or repeatedly logging out using this command:
 
 ```
 $ sddm-greeter --test-mode --theme /path/to/your/theme
