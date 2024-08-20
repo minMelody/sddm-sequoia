@@ -69,18 +69,20 @@ Pane {
     }
   }
 
-  Item {
+  Pane {
     id: greeter
     visible: true
     anchors.fill: parent
     anchors.rightMargin: -anchors.leftMargin
+    background: null
+
+    padding: 55
 
     Clock {
       id: datetime
 
       anchors.right: parent.right
       anchors.bottom: parent.bottom
-      anchors.margins: 55
     }
 
     Label {
@@ -102,102 +104,116 @@ Pane {
     }
   }
 
-  ColumnLayout {
+  Pane {
     id: login_page
     visible: false
+    background: null
 
-    anchors.fill: parent
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      bottom: vkbd_container.top
+    }
     width: parent.width
 
-    spacing: 0
+    padding: root.font.pointSize
 
-    Item {
-      id: login_container
-      Layout.fillHeight: true
-      Layout.fillWidth: true
-      Layout.leftMargin: horizontalThird * 0.75
-      Layout.rightMargin: horizontalThird * 0.75
-      Layout.topMargin: 16
+    ColumnLayout {
+      anchors.fill: parent
+      spacing: 0
 
-      LoginForm {
-        id: login_form
-
-        anchors.centerIn: parent
-
-        onLoginRequest: login_form.login(session.currentIndex);
-        KeyNavigation.down: session
-      }
-    }
-
-    RowLayout {
-      id: footer
-
-      Layout.margins: root.font.pointSize
-      Layout.fillHeight: false
-      Layout.preferredHeight: 36
-      Layout.preferredWidth: root.width
-
-      spacing: Layout.margins * 0.5
-
-      SessionSelection {
-        id: session
-        Layout.preferredHeight: parent.Layout.preferredHeight
-        Layout.preferredWidth: Layout.preferredHeight
-
-        KeyNavigation.right: layout
-        KeyNavigation.tab: KeyNavigation.right
-      }
-
-      Rectangle { // spacer
+      Item {
+        id: login_container
+        Layout.fillHeight: true
         Layout.fillWidth: true
+        Layout.leftMargin: horizontalThird * 0.75
+        Layout.rightMargin: horizontalThird * 0.75
+
+        LoginForm {
+          id: login_form
+
+          anchors.centerIn: parent
+
+          onLoginRequest: login_form.login(session.currentIndex);
+          KeyNavigation.down: session
+        }
       }
 
-      LayoutSelection {
-        id: layout
-        Layout.preferredHeight: parent.Layout.preferredHeight
-        Layout.preferredWidth: Layout.preferredHeight
+      RowLayout {
+        id: footer
 
-        KeyNavigation.left: session
-        KeyNavigation.right: accessibility
-        KeyNavigation.tab: KeyNavigation.right
+        Layout.fillHeight: false
+        Layout.preferredHeight: 36
+        Layout.preferredWidth: root.width
+
+        spacing: Layout.margins * 0.5
+
+        SessionSelection {
+          id: session
+          Layout.preferredHeight: parent.Layout.preferredHeight
+          Layout.preferredWidth: Layout.preferredHeight
+
+          KeyNavigation.right: layout
+          KeyNavigation.tab: KeyNavigation.right
+        }
+
+        Rectangle { // spacer
+          Layout.fillWidth: true
+        }
+
+        LayoutSelection {
+          id: layout
+          Layout.preferredHeight: parent.Layout.preferredHeight
+          Layout.preferredWidth: Layout.preferredHeight
+
+          KeyNavigation.left: session
+          KeyNavigation.right: accessibility
+          KeyNavigation.tab: KeyNavigation.right
+        }
+
+        AccessibilityMenu {
+          id: accessibility
+          Layout.preferredHeight: parent.Layout.preferredHeight
+          Layout.preferredWidth: Layout.preferredHeight
+
+          KeyNavigation.left: layout
+          KeyNavigation.right: power
+          KeyNavigation.tab: KeyNavigation.right
+        }
+
+        PowerMenu {
+          id: power
+          Layout.preferredHeight: parent.Layout.preferredHeight
+          Layout.preferredWidth: Layout.preferredHeight
+
+          forcePowerOptions: true
+          KeyNavigation.left: accessibility
+        }
       }
 
-      AccessibilityMenu {
-        id: accessibility
-        Layout.preferredHeight: parent.Layout.preferredHeight
-        Layout.preferredWidth: Layout.preferredHeight
-
-        KeyNavigation.left: layout
-        KeyNavigation.right: power
-        KeyNavigation.tab: KeyNavigation.right
-      }
-
-      PowerMenu {
-        id: power
-        Layout.preferredHeight: parent.Layout.preferredHeight
-        Layout.preferredWidth: Layout.preferredHeight
-
-        forcePowerOptions: true
-        KeyNavigation.left: accessibility
-      }
     }
+  }
 
-    Rectangle {
+  Rectangle {
+    id: vkbd_container
+    visible: false
+
+    width: parent.width
+    implicitHeight: virtual_keyboard.implicitHeight
+    anchors.bottom: parent.bottom
+    color: "transparent"
+
+    Loader {
+      id: virtual_keyboard
+
       width: parent.width
-      implicitHeight: virtual_keyboard.implicitHeight
-      color: "transparent"
+      z: 1
 
-      Loader {
-        id: virtual_keyboard
+      source: "components/VirtualKeyboard.qml"
+      asynchronous: true
 
-        width: parent.width
-        z: 1
-
-        source: "components/VirtualKeyboard.qml"
-        asynchronous: true
-
-        onStatusChanged: accessibility.keyboardStatusChanged(status)
-      }
+      onStatusChanged: accessibility.keyboardStatusChanged(status)
     }
   }
 
@@ -244,6 +260,7 @@ Pane {
         script: {
           greeter.visible = false;
           login_page.visible = true;
+          vkbd_container.visible = true;
         }
       }
       NumberAnimation {
@@ -258,8 +275,6 @@ Pane {
   Connections {
     target: sddm
     function onLoginSucceeded() {}
-    function onLoginFailed() {
-      login_form.loginFailed();
-    }
+    function onLoginFailed() { login_form.loginFailed(); }
   }
 }

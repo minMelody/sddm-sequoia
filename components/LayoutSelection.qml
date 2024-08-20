@@ -7,7 +7,6 @@ import "common"
 ComboBox {
   id: container
   property int fontSize: root.font.pointSize * 0.875
-  property int screenPadding: parent.Layout.margins
   background: null
 
   indicator: Button {
@@ -83,7 +82,7 @@ ComboBox {
   }
 
   popup: PopupPanel {
-    y: -(height + screenPadding)
+    y: -height
     x: (parent.width - width) * 0.5
 
     model: container.delegateModel
