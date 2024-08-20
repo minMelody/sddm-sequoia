@@ -76,17 +76,19 @@ Pane {
     anchors.rightMargin: -anchors.leftMargin
     background: null
 
-    padding: 55
+    padding: config.clockPadding
 
     Clock {
       id: datetime
-
-      anchors.right: parent.right
-      anchors.bottom: parent.bottom
     }
 
     Label {
-      anchors.centerIn: parent
+      anchors {
+        horizontalCenter: parent.horizontalCenter
+
+        verticalCenter: datetime.is_center_center ? undefined : parent.verticalCenter
+        bottom: datetime.is_center_center ? datetime.top : undefined
+      }
 
       color: root.theme.primary
       font.pointSize: datetime.fontSize

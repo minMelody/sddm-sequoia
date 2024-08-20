@@ -7,11 +7,32 @@ Column {
 
   spacing: -fontSize / 2
 
+  readonly property var position_str: config.clockPosition.split(" ")
+  readonly property bool is_left: position_str[position_str.length-1] == "left"
+  readonly property bool is_right: position_str[position_str.length-1] == "right"
+  readonly property bool is_top: position_str[0] == "top"
+  readonly property bool is_bottom: position_str[0] == "bottom"
+  readonly property bool is_center_center: !(is_left || is_right) && !(is_top || is_bottom)
+
+  anchors {
+    left: is_left ? parent.left : undefined
+    horizontalCenter: !(is_left || is_right) ? parent.horizontalCenter : undefined
+    right: is_right ? parent.right : undefined
+
+    top: is_top ? parent.top: undefined
+    verticalCenter: !(is_top || is_bottom) ? parent.verticalCenter : undefined
+    bottom: is_bottom ? parent.bottom: undefined
+  }
+
   Label {
     id: time_label
     visible: true
 
-    anchors.right: parent.right
+    anchors {
+      left: is_left ? parent.left : undefined
+      horizontalCenter: !(is_left || is_right) ? parent.horizontalCenter : undefined
+      right: is_right ? parent.right : undefined
+    }
 
     renderType: Text.QtRendering
     color: config.clockStyle == "outline" ? "transparent" : root.theme.primary
@@ -27,7 +48,11 @@ Column {
   Label {
     id: date_label
 
-    anchors.right: parent.right
+    anchors {
+      left: is_left ? parent.left : undefined
+      horizontalCenter: !(is_left || is_right) ? parent.horizontalCenter : undefined
+      right: is_right ? parent.right : undefined
+    }
 
     renderType: Text.QtRendering
     color: root.theme.primary
