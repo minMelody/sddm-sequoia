@@ -110,7 +110,6 @@ ComboBox {
   }
 
   popup: PopupPanel {
-    y: -height
     x: (parent.width - width) * !(root.LayoutMirroring.enabled)
     interactive: false
 

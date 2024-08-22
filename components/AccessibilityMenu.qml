@@ -133,8 +133,7 @@ ComboBox {
   }
 
   popup: PopupPanel {
-    y: -height
-    x: root.LayoutMirroring.enabled ? -parent.width : (2 * parent.width - width)
+    x: root.LayoutMirroring.enabled ? -parent.width : (2 * parent.width - width + parent.parent.spacing)
 
     model: container.delegateModel
   }

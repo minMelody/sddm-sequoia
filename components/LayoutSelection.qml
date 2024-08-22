@@ -82,7 +82,6 @@ ComboBox {
   }
 
   popup: PopupPanel {
-    y: -height
     x: (parent.width - width) * 0.5
 
     model: container.delegateModel

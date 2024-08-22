@@ -149,7 +149,7 @@ Pane {
         Layout.preferredHeight: 36
         Layout.preferredWidth: root.width
 
-        spacing: Layout.margins * 0.5
+        spacing: root.font.pointSize * 0.5
 
         SessionSelection {
           id: session

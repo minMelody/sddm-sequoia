@@ -4,6 +4,7 @@ import QtQuick.Controls 2.15
 
 Popup {
   id: menu
+  y: -(height + root.font.pointSize / 2)
 
   property var model
   property Component delegate
