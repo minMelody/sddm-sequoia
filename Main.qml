@@ -255,8 +255,8 @@ Pane {
         }
         NumberAnimation {
           target: greeter
-          property: "x"
-          from: 0; to: root.horizontalThird
+          property: config.transitionDirection[config.transitionDirection.length-1] == "y" ? "y" : "x"
+          from: 0; to: (property == "y" ? root.verticalThird : root.horizontalThird) * (2 * (config.transitionDirection[0] != "-") - 1)
           duration: 150 * config.boolValue("enableAnimations")
         }
       }
