@@ -79,7 +79,7 @@ Pane {
     clip: true
     background: null
 
-    padding: config.clockPadding
+    padding: config.dateTimePadding
 
     Clock {
       id: datetime

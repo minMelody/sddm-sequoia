@@ -7,7 +7,7 @@ Column {
 
   spacing: -fontSize / 2
 
-  readonly property var position_str: config.clockPosition.split(" ")
+  readonly property var position_str: config.dateTimePosition.split(" ")
   readonly property bool is_left: position_str[position_str.length-1] == "left"
   readonly property bool is_right: position_str[position_str.length-1] == "right"
   readonly property bool is_top: position_str[0] == "top"
