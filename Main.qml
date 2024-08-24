@@ -72,8 +72,11 @@ Pane {
   Pane {
     id: greeter
     visible: true
-    anchors.fill: parent
-    anchors.rightMargin: -anchors.leftMargin
+    x: 0; y: 0
+    width: root.width
+    height: root.height
+
+    clip: true
     background: null
 
     padding: config.clockPadding
@@ -248,13 +251,13 @@ Pane {
           target: greeter
           property: "opacity"
           from: 1; to: 0
-          duration: 100 * config.boolValue("enableAnimations")
+          duration: 150 * config.boolValue("enableAnimations")
         }
         NumberAnimation {
           target: greeter
-          property: "anchors.leftMargin"
+          property: "x"
           from: 0; to: root.horizontalThird
-          duration: 100 * config.boolValue("enableAnimations")
+          duration: 150 * config.boolValue("enableAnimations")
         }
       }
 
