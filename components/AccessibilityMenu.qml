@@ -10,9 +10,9 @@ ComboBox {
   property int screenPadding: parent.Layout.margins
   background: null
 
-  property bool vkbd_enabled: false
+  property bool vkbd_installed: false
   function keyboardStatusChanged(state: int) {
-    vkbd_enabled = state == Loader.Ready
+    vkbd_installed = state == Loader.Ready
   }
 
   indicator: Button {
@@ -40,7 +40,7 @@ ComboBox {
     if (currentIndex == 0) root.activateVirtualKeyboard = !root.activateVirtualKeyboard;
   }
 
-  readonly property var vkbd_toggle: {'icon': "", 'label': config.virtualKeyboard || "Virtual keyboard", 'enabled': vkbd_enabled}
+  readonly property var vkbd_toggle: {'icon': "", 'label': config.virtualKeyboard || "Virtual keyboard", 'enabled': vkbd_installed}
 
   model: [vkbd_toggle]
   onActivated: {
@@ -112,7 +112,7 @@ ComboBox {
       states: [
         State {
           name: "disabled"
-          when: !container.vkbd_enabled
+          when: !container.vkbd_installed
           PropertyChanges {
             target: toggle.indicator
             color: "#555555"
