@@ -59,7 +59,7 @@ Column {
     font.pointSize: fontSize
 
     function update() {
-      text = Qt.formatDateTime(value, config.dateFormat)
+      text = value.toLocaleDateString(Qt.locale(config.locale), config.dateFormat)
     }
   }
 
