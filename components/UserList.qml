@@ -13,7 +13,6 @@ ComboBox {
 
   indicator: Button {
     anchors.fill: parent
-    anchors.margins: 5
     Text {
       anchors.centerIn: parent
       renderType: Text.QtRendering

@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQuick.Layouts 1.11
+import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 
 import "common"
@@ -40,11 +40,12 @@ Column {
       }
     }
 
-    onVisibleChanged: {if (visible && text.length == 0) forceActiveFocus();}
+    onVisibleChanged: { if (visible && text.length == 0) forceActiveFocus(); }
 
     text: user_list.currentText
 
     placeholderText: config.username || qsTr(text_const.userName)
+    placeholderTextColor: Qt.lighter(root.theme.primary, 0.6)
     horizontalAlignment: Text.AlignHCenter
     selectByMouse: true
 
@@ -75,6 +76,7 @@ Column {
       onVisibleChanged: {if (visible && username.text.length > 0) forceActiveFocus();}
 
       placeholderText: config.password || qsTr(text_const.password)
+      placeholderTextColor: Qt.lighter(root.theme.primary, 0.6)
       horizontalAlignment: Text.AlignHCenter
       selectByMouse: true
       echoMode: config.passwordEchoStyle == "off" ? TextInput.NoEcho : TextInput.Password
