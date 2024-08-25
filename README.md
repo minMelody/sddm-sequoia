@@ -8,17 +8,19 @@ Written from scratch, it is primarily made for standalone SDDM, aiming to be cus
 ![login screenshot](https://github.com/user-attachments/assets/7bc865a4-4d5c-4411-9148-57cf7fa3d80c "Session selection")
 
 
-## Dependencies
-
-* SDDM
-* [a Nerd Font](https://www.nerdfonts.com/) >= v3.0
-* Qt5
-  * Qt Quick Controls 2
-  * Qt Graphical Effects
-
 ## Installation
 
-**This guide only covers manual installation on desktop environments other than KDE Plasma for now**
+*Packages used in this guide are for Arch Linux, package names may vary for your distro*
+
+### Dependencies
+
+* sddm
+* [a Nerd Font](https://www.nerdfonts.com/) >= v3.0
+* Qt6
+  * qt6-declarative
+  * qt6-5compat
+
+### Manual Installation
 
 1- Once you have downloaded the tarball through the releases tab, extract it to the SDDM theme directory *(change the archive path if needed)*:
 
@@ -35,17 +37,30 @@ It should look like this:
 Current=sequoia
 ```
 
+### On screen keyboard
+
+If you wish to use the virtual keyboard, install [qt6-virtualkeyboard](https://archlinux.org/packages/?name=qt6-virtualkeyboard)
+
+then edit your SDDM config file, under `[General]` change `InputMethod` to `qtvirtualkeyboard`:
+
+```conf
+[General]
+InputMethod=qtvirtualkeyboard
+```
+
+see also: [the Arch wiki guide](https://wiki.archlinux.org/title/SDDM#Enable_virtual_keyboard)
+
 ### Testing
 
 You can easily try out themes without changing your SDDM config or repeatedly logging out using this command:
 
 ```
-$ sddm-greeter --test-mode --theme /path/to/your/theme
+$ sddm-greeter-qt6 --test-mode --theme /path/to/your/theme
 ```
 
 It's quite the time-saver when configuring your `theme.conf` file.
 
 ## Support
 
-If you want to show support by buying me a coffee or send a tip feel free to visit my ko-fi page :3
+If you want to show support by buying me a coffee or send a tip feel free to visit my ko-fi page :3 <br/>
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y0473AA)
