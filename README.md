@@ -22,7 +22,7 @@ Written from scratch, it is primarily made for standalone SDDM, aiming to be cus
 
 ### Manual Installation
 
-1- Once you have downloaded the tarball through the releases tab, extract it to the SDDM theme directory *(change the archive path if needed)*:
+1- Once you have downloaded the tarball through the releases tab or cloning this repository, extract it to the SDDM theme directory *(change the archive path if needed)*:
 
 ```
 $ sudo tar -xzvf ~/sequoia.tar.gz -C /usr/share/sddm/themes
@@ -41,7 +41,7 @@ Current=sequoia
 
 If you wish to use the virtual keyboard, install [qt6-virtualkeyboard](https://archlinux.org/packages/?name=qt6-virtualkeyboard)
 
-then edit your SDDM config file, under `[General]` change `InputMethod` to `qtvirtualkeyboard`:
+then edit your SDDM config file, under `[General]` set `InputMethod` to `qtvirtualkeyboard`:
 
 ```conf
 [General]
