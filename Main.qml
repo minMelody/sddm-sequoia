@@ -18,8 +18,8 @@ Pane {
     accent: config.accentColour
   }
 
-  height: config.height
-  width: config.width
+  height: config.height || Screen.height
+  width: config.width || Screen.width
   padding: 0
 
   readonly property int verticalThird: height * 0.33
@@ -35,8 +35,6 @@ Pane {
   property string iconFont: config.iconFont || config.fontFamily
 
   background: Rectangle {
-    height: root.height || Screen.height
-    width: root.width || Screen.width
     color: config.backgroundColour
 
     Image {
@@ -120,7 +118,6 @@ Pane {
       right: parent.right
       bottom: vkbd_container.top
     }
-    width: parent.width
 
     padding: root.font.pointSize
 
