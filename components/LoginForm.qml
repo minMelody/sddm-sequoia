@@ -62,7 +62,6 @@ Column {
     KeyNavigation.tab: password
 
     background: null
-
   }
 
   RowLayout {
@@ -73,7 +72,7 @@ Column {
       id: password
       Layout.fillWidth: true
 
-      onVisibleChanged: {if (visible && username.text.length > 0) forceActiveFocus();}
+      onVisibleChanged: { if (visible && username.text.length > 0) forceActiveFocus(); }
 
       placeholderText: config.password || qsTr(text_const.password)
       placeholderTextColor: Qt.lighter(root.theme.primary, 0.6)
@@ -98,17 +97,18 @@ Column {
 
       Text {
         height: parent.height
-        width: height
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
+        width: height * 1.2
 
         opacity: keyboard.capsLock
+
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
 
         renderType: Text.QtRendering
         text: "󰪛"
         font.family: iconFont
         color: root.theme.primary
-        font.pointSize: fontSize * 1.5
+        font.pointSize: fontSize * 1.4
 
         Behavior on opacity {
           NumberAnimation { duration: 100 * config.boolValue("enableAnimations") }
@@ -130,7 +130,7 @@ Column {
         verticalAlignment: Text.AlignVCenter
 
         renderType: Text.QtRendering
-        font.pointSize: fontSize * 1.5
+        font.pointSize: fontSize * 1.4
         font.family: iconFont
         color: login_button.focus ? root.theme.accent : root.theme.primary
         text: LayoutMirroring.enabled ? "" : ""
