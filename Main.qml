@@ -35,8 +35,8 @@ Pane {
   property string iconFont: config.iconFont || config.fontFamily
 
   background: Rectangle {
-    height: root.height
-    width: root.width
+    height: root.height || Screen.height
+    width: root.width || Screen.width
     color: config.backgroundColour
 
     Image {
