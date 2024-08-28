@@ -59,6 +59,7 @@ Pane {
         loops: config.blurRecursiveLoops
       }
     }
+
     Rectangle {
       id: darken_wallpaper
       anchors.fill: parent
@@ -128,9 +129,9 @@ Pane {
       Item {
         id: login_container
         Layout.fillHeight: true
-        Layout.fillWidth: true
-        Layout.leftMargin: horizontalThird * 0.75
-        Layout.rightMargin: horizontalThird * 0.75
+        Layout.fillWidth: false
+        Layout.preferredWidth: root.font.pointSize * 50
+        Layout.alignment: Qt.AlignHCenter
 
         LoginForm {
           id: login_form
