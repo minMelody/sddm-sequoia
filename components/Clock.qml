@@ -38,7 +38,7 @@ Column {
     color: config.clockStyle == "outline" ? "transparent" : root.theme.primary
     style: config.clockStyle == "outline" ? Text.Outline  : Text.Normal
     styleColor: root.theme.primary
-    font.pointSize: fontSize * 2.5
+    font.pointSize: fontSize * 3
 
     function update() {
       text = Qt.formatTime(value, config.clockFormat)
@@ -56,7 +56,7 @@ Column {
 
     renderType: Text.QtRendering
     color: root.theme.primary
-    font.pointSize: fontSize
+    font.pointSize: Math.min(1.4 * (time_label.width / text.length), fontSize * 2)
 
     function update() {
       text = value.toLocaleDateString(Qt.locale(config.locale), config.dateFormat)
