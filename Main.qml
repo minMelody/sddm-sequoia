@@ -11,11 +11,13 @@ Pane {
   id: root
   SDDM.TextConstants {id: text_const}
 
-  readonly property ColourPalette theme: ColourPalette {
-    primary: config.primaryColour || "white"
-    background: config.popupsBackgroundColour || "#2a2a2a"
-    foreground: config.popupsForegroundColour || "white"
+  palette {
     accent: config.accentColour
+    highlight: config.accentColour
+    text: config.primaryColour
+    placeholderText: Qt.lighter(config.primaryColour, 0.6)
+    buttonText: config.popupsForegroundColour
+    button: config.popupsBackgroundColour
   }
 
   height: config.height || Screen.height
@@ -92,7 +94,7 @@ Pane {
         bottom: datetime.is_center_center ? datetime.top : undefined
       }
 
-      color: root.theme.primary
+      color: root.palette.text
       font.pointSize: datetime.fontSize
 
       renderType: Text.QtRendering

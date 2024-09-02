@@ -43,7 +43,6 @@ Column {
     text: user_list.currentText
 
     placeholderText: config.username || qsTr(text_const.userName)
-    placeholderTextColor: Qt.lighter(root.theme.primary, 0.6)
     horizontalAlignment: Text.AlignHCenter
     selectByMouse: true
 
@@ -51,7 +50,7 @@ Column {
     font.pointSize: fontSize * 1.2
     font.bold: true
     font.capitalization: config.boolValue("capitaliseUsername") ? Font.Capitalize : Font.MixedCase
-    color: root.theme.primary
+    color: root.palette.text
 
     onAccepted: password.forceActiveFocus()
     KeyNavigation.down: password
@@ -73,14 +72,13 @@ Column {
       onVisibleChanged: { if (visible && username.text.length > 0) forceActiveFocus(); }
 
       placeholderText: config.password || qsTr(text_const.password)
-      placeholderTextColor: Qt.lighter(root.theme.primary, 0.6)
       horizontalAlignment: Text.AlignHCenter
       selectByMouse: true
       echoMode: reveal_passwd.checked ? TextInput.Normal : (config.passwordEchoStyle == "off" ? TextInput.NoEcho : TextInput.Password)
 
       renderType: Text.QtRendering
       font.pointSize: fontSize
-      color: root.theme.primary
+      color: root.palette.text
       passwordCharacter: "•"
 
       onAccepted: {focus = false; loginRequest()}
@@ -89,7 +87,7 @@ Column {
       background: Rectangle {
         color: "transparent"
         radius: 8
-        border.color: parent.focus ? root.theme.accent : root.theme.primary
+        border.color: parent.focus ? root.palette.accent : root.palette.text
         border.width: 1
       }
 
@@ -107,7 +105,7 @@ Column {
           renderType: Text.QtRendering
           text: "󰪛"
           font.family: iconFont
-          color: root.theme.primary
+          color: root.palette.text
           font.pointSize: fontSize * 1.3
         }
 
@@ -160,7 +158,7 @@ Column {
         renderType: Text.QtRendering
         font.pointSize: fontSize * 1.4
         font.family: iconFont
-        color: login_button.focus ? root.theme.accent : root.theme.primary
+        color: login_button.focus ? root.palette.accent : root.palette.text
         text: LayoutMirroring.enabled ? "" : ""
       }
 
@@ -170,7 +168,7 @@ Column {
       background: Rectangle {
         color: "transparent"
         radius: 8
-        border.color: parent.focus? root.theme.accent : root.theme.primary
+        border.color: parent.focus? root.palette.accent : root.palette.text
         border.width: 1
       }
 
@@ -180,12 +178,12 @@ Column {
           when: login_button.pressed
           PropertyChanges {
             target: login_button.background
-            color: root.theme.accent
-            border.color: root.theme.primary
+            color: root.palette.accent
+            border.color: root.palette.text
           }
           PropertyChanges {
             target: icon
-            color: root.theme.primary
+            color: root.palette.text
           }
         }
       ]
@@ -200,7 +198,7 @@ Column {
     opacity: 0
 
     renderType: Text.QtRendering
-    color: root.theme.accent
+    color: root.palette.accent
     font.pointSize: fontSize * 0.825
     height: fontSize * 3
     verticalAlignment: Qt.AlignVCenter

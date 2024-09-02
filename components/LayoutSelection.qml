@@ -18,7 +18,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: keyboard.layouts[keyboard.currentLayout].shortName
       font.family: iconFont
-      color: container.focus ? root.theme.accent : root.theme.primary
+      color: container.focus ? root.palette.accent : root.palette.text
       font.pointSize: fontSize * 1.5
     }
 
@@ -52,7 +52,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: modelData.longName
       font.pointSize: fontSize
-      color: root.theme.foreground
+      color: root.palette.buttonText
     }
 
     background: Rectangle {
@@ -65,7 +65,7 @@ ComboBox {
         when: keyboard_layout.highlighted
         PropertyChanges {
           target: keyboard_layout.background
-          color: root.theme.accent
+          color: root.palette.accent
         }
       },
       State {

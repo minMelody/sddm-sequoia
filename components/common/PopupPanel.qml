@@ -19,7 +19,7 @@ Popup {
   bottomPadding: background.radius
 
   background: Rectangle {
-    color: root.theme.background
+    color: root.palette.button
     radius: 8
   }
 

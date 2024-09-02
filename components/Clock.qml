@@ -35,9 +35,9 @@ Column {
     }
 
     renderType: Text.QtRendering
-    color: config.clockStyle == "outline" ? "transparent" : root.theme.primary
+    color: config.clockStyle == "outline" ? "transparent" : root.palette.text
     style: config.clockStyle == "outline" ? Text.Outline  : Text.Normal
-    styleColor: root.theme.primary
+    styleColor: root.palette.text
     font.pointSize: fontSize * 3
 
     function update() {
@@ -55,7 +55,7 @@ Column {
     }
 
     renderType: Text.QtRendering
-    color: root.theme.primary
+    color: root.palette.text
     font.pointSize: Math.min(1.4 * (time_label.width / text.length), fontSize * 2)
 
     function update() {

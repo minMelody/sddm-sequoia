@@ -22,7 +22,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: ""
       font.family: iconFont
-      color: container.focus ? root.theme.accent : root.theme.primary
+      color: container.focus ? root.palette.accent : root.palette.text
       font.pointSize: fontSize * 1.5
     }
 
@@ -61,7 +61,7 @@ ComboBox {
       text: modelData['icon']
       font.pointSize: fontSize
       font.family: config.iconFont
-      color: root.theme.foreground
+      color: root.palette.buttonText
     }
 
     Text {
@@ -69,7 +69,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: modelData['label']
       font.pointSize: fontSize
-      color: root.theme.foreground
+      color: root.palette.buttonText
       Layout.fillWidth: true
     }
 
@@ -96,8 +96,8 @@ ComboBox {
         implicitHeight: fontSize * 1.5
         implicitWidth: fontSize * 3
         radius: implicitHeight / 2
-        color: parent.checked ? root.theme.accent : Qt.darker(root.theme.background, 1.3)
-        border.color: parent.checked ? root.theme.accent : "#cccccc"
+        color: parent.checked ? root.palette.accent : Qt.darker(root.palette.button, 1.3)
+        border.color: parent.checked ? root.palette.accent : "#cccccc"
 
         Rectangle {
           id: knob
@@ -105,8 +105,8 @@ ComboBox {
           height: parent.implicitHeight
           width: height
           radius: height / 2
-          color: toggle.down ? "#cccccc" : root.theme.foreground
-          border.color: toggle.checked ? root.theme.accent : "#999999"
+          color: toggle.down ? "#cccccc" : root.palette.buttonText
+          border.color: toggle.checked ? root.palette.accent : "#999999"
         }
       }
       states: [

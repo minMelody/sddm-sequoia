@@ -16,7 +16,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: ""
       font.family: iconFont
-      color: container.focus ? root.theme.accent : root.theme.primary
+      color: container.focus ? root.palette.accent : root.palette.text
       font.pointSize: fontSize * 1.5
     }
 
@@ -51,7 +51,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: name
       font.pointSize: fontSize
-      color: root.theme.foreground
+      color: root.palette.buttonText
     }
 
     background: Rectangle {
@@ -64,7 +64,7 @@ ComboBox {
         when: session_item.highlighted
         PropertyChanges {
           target: session_item.background
-          color: root.theme.accent
+          color: root.palette.accent
         }
       },
       State {

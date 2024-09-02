@@ -16,7 +16,7 @@ ComboBox {
       renderType: Text.QtRendering
       text: "󰐥"
       font.family: iconFont
-      color: container.focus ? root.theme.accent : root.theme.primary
+      color: container.focus ? root.palette.accent : root.palette.text
       font.pointSize: fontSize * 1.5
     }
 
@@ -69,14 +69,14 @@ ComboBox {
         text: modelData['icon']
         font.family: iconFont
         font.pointSize: fontSize
-        color: root.theme.foreground
+        color: root.palette.buttonText
       }
       Text {
         id: label
         renderType: Text.QtRendering
         text: modelData['label']
         font.pointSize: fontSize
-        color: root.theme.foreground
+        color: root.palette.buttonText
       }
     }
     onClicked: {
@@ -93,7 +93,7 @@ ComboBox {
         when: power_option.activeFocus
         PropertyChanges {
           target: power_option.background
-          color: root.theme.accent
+          color: root.palette.accent
         }
       },
       State {

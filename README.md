@@ -16,7 +16,7 @@ Written from scratch, it is primarily made for standalone SDDM, aiming to be cus
 
 * sddm
 * [a Nerd Font](https://www.nerdfonts.com/) >= v3.0
-* Qt6
+* Qt6 >= 6.6
   * qt6-declarative
   * qt6-5compat
 
