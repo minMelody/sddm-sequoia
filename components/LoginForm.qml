@@ -76,7 +76,7 @@ Column {
       placeholderTextColor: Qt.lighter(root.theme.primary, 0.6)
       horizontalAlignment: Text.AlignHCenter
       selectByMouse: true
-      echoMode: config.passwordEchoStyle == "off" ? TextInput.NoEcho : TextInput.Password
+      echoMode: reveal_passwd.checked ? TextInput.Normal : (config.passwordEchoStyle == "off" ? TextInput.NoEcho : TextInput.Password)
 
       renderType: Text.QtRendering
       font.pointSize: fontSize
@@ -93,24 +93,54 @@ Column {
         border.width: 1
       }
 
-      Text {
+      Label {
+        anchors.left: parent.left
         height: parent.height
         width: height
 
         opacity: keyboard.capsLock
 
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
+        Text {
+          horizontalAlignment: Text.AlignRight
+          verticalAlignment: Text.AlignVCenter
 
-        renderType: Text.QtRendering
-        text: "󰪛"
-        font.family: iconFont
-        color: root.theme.primary
-        font.pointSize: fontSize * 1.4
+          renderType: Text.QtRendering
+          text: "󰪛"
+          font.family: iconFont
+          color: root.theme.primary
+          font.pointSize: fontSize * 1.3
+        }
 
         Behavior on opacity {
-          NumberAnimation { duration: 100 * config.boolValue("enableAnimations") }
+          NumberAnimation { duration: 75 * config.boolValue("enableAnimations") }
         }
+      }
+
+      CheckBox {
+        id: reveal_passwd
+
+        anchors.right: parent.right
+        height: parent.height
+        width: height
+
+        indicator: Text {
+          height: parent.height
+          horizontalAlignment: Text.AlignLeft
+          verticalAlignment: Text.AlignVCenter
+
+          renderType: Text.QtRendering
+          text: parent.checked ? "󰈈" : "󰈉"
+          font.family: iconFont
+          color: root.palette.text
+          opacity: parent.hovered ? 1 : 0.66
+          font.pointSize: fontSize * 1.2
+
+          Behavior on opacity {
+            NumberAnimation { duration: 75 * config.boolValue("enableAnimations") }
+          }
+        }
+
+        onPressed: password.forceActiveFocus()
       }
     }
 
