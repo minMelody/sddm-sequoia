@@ -42,7 +42,7 @@ Column {
 
     text: user_list.currentText
 
-    placeholderText: config.username || qsTr(text_const.userName)
+    placeholderText: config.username || text_const.userName
     horizontalAlignment: Text.AlignHCenter
     selectByMouse: true
 
@@ -71,7 +71,7 @@ Column {
 
       onVisibleChanged: { if (visible && username.text.length > 0) forceActiveFocus(); }
 
-      placeholderText: config.password || qsTr(text_const.password)
+      placeholderText: config.password || text_const.password
       horizontalAlignment: Text.AlignHCenter
       selectByMouse: true
       echoMode: reveal_passwd.checked ? TextInput.Normal : (config.passwordEchoStyle == "off" ? TextInput.NoEcho : TextInput.Password)
@@ -194,7 +194,7 @@ Column {
 
   Text {
     id: notification
-    text: config.loginFailed || qsTr(text_const.loginFailed)
+    text: config.loginFailed || text_const.loginFailed
     opacity: 0
 
     renderType: Text.QtRendering

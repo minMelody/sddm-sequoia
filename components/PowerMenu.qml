@@ -38,10 +38,10 @@ ComboBox {
   }
 
   property bool forcePowerOptions: false
-  readonly property var action_poweroff:  {'icon': "", 'label': config.poweroff  || qsTr(text_const.shutdown ), 'enabled': sddm.canPowerOff }
-  readonly property var action_reboot:    {'icon': "", 'label': config.reboot    || qsTr(text_const.reboot   ), 'enabled': sddm.canReboot   }
-  readonly property var action_suspend:   {'icon': "", 'label': config.suspend   || qsTr(text_const.suspend  ), 'enabled': sddm.canSuspend  }
-  readonly property var action_hibernate: {'icon': "󰍷", 'label': config.hibernate || qsTr(text_const.hibernate), 'enabled': sddm.canHibernate}
+  readonly property var action_poweroff:  {'icon': "", 'label': config.poweroff  || text_const.shutdown , 'enabled': sddm.canPowerOff }
+  readonly property var action_reboot:    {'icon': "", 'label': config.reboot    || text_const.reboot   , 'enabled': sddm.canReboot   }
+  readonly property var action_suspend:   {'icon': "", 'label': config.suspend   || text_const.suspend  , 'enabled': sddm.canSuspend  }
+  readonly property var action_hibernate: {'icon': "󰍷", 'label': config.hibernate || text_const.hibernate, 'enabled': sddm.canHibernate}
 
   model: [action_suspend, action_hibernate, action_reboot, action_poweroff]
   onActivated: {
