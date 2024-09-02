@@ -4,8 +4,8 @@ Sequoia is a modern eye-candy theme for SDDM, making use of Nerd Fonts for its i
 
 Written from scratch, it is primarily made for standalone SDDM, aiming to be customisable with accessibility options.
 
-![theme screenshot](preview.png "Preview")
-![login screenshot](https://github.com/user-attachments/assets/7bc865a4-4d5c-4411-9148-57cf7fa3d80c "Session selection")
+![theme-screenshot](preview.png "Preview")
+![session-menu](https://github.com/user-attachments/assets/ab06edb2-ea17-465b-8961-8330662de666 "Session selection")
 
 
 ## Installation
