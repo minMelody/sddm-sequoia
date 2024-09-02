@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Column {
-  property int fontSize: root.font.pointSize * 2
+  property int fontSize: root.font.pointSize * config.realValue("fontSizeMultiplier")
   property date value: new Date()
 
   spacing: -fontSize / 2
