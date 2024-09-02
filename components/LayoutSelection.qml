@@ -51,6 +51,7 @@ ComboBox {
 
       renderType: Text.QtRendering
       text: modelData.longName
+      font.family: root.font.family
       font.pointSize: fontSize
       color: root.palette.buttonText
     }

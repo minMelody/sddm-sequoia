@@ -68,6 +68,7 @@ ComboBox {
       id: label
       renderType: Text.QtRendering
       text: modelData['label']
+      font.family: root.font.family
       font.pointSize: fontSize
       color: root.palette.buttonText
       Layout.fillWidth: true
