@@ -31,7 +31,7 @@ Pane {
   property bool activateVirtualKeyboard: config.boolValue("virtualKeyboardStartActive")
 
   font.family: config.fontFamily
-  font.pointSize: config.fontSize || (height / 65)
+  font.pointSize: config.fontSize || (height / 80)
   property string iconFont: config.iconFont || config.fontFamily
 
   background: Rectangle {
@@ -130,7 +130,7 @@ Pane {
         id: login_container
         Layout.fillHeight: true
         Layout.fillWidth: false
-        Layout.preferredWidth: root.font.pointSize * 50
+        Layout.preferredWidth: Math.min(login_form.fontSize * 60, login_page.width)
         Layout.alignment: Qt.AlignHCenter
 
         LoginForm {

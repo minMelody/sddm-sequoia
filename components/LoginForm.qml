@@ -6,7 +6,7 @@ import "common"
 
 Column {
   id: container
-  property int fontSize: root.font.pointSize * 0.75
+  property int fontSize: root.font.pointSize
 
   signal loginRequest()
   function login(session: int) {
@@ -32,8 +32,6 @@ Column {
       height: parent.height
       width: height
 
-      fontSize: container.fontSize
-
       onUserSelected: {
         username.text = currentText;
         password.forceActiveFocus();
@@ -50,7 +48,7 @@ Column {
     selectByMouse: true
 
     renderType: Text.QtRendering
-    font.pointSize: fontSize * 1.5
+    font.pointSize: fontSize * 1.2
     font.bold: true
     font.capitalization: config.boolValue("capitaliseUsername") ? Font.Capitalize : Font.MixedCase
     color: root.theme.primary
@@ -97,7 +95,7 @@ Column {
 
       Text {
         height: parent.height
-        width: height * 1.2
+        width: height
 
         opacity: keyboard.capsLock
 
@@ -173,7 +171,7 @@ Column {
 
     renderType: Text.QtRendering
     color: root.theme.accent
-    font.pointSize: fontSize
+    font.pointSize: fontSize * 0.825
     height: fontSize * 3
     verticalAlignment: Qt.AlignVCenter
 

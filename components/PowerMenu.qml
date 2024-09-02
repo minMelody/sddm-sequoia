@@ -6,7 +6,7 @@ import "common"
 
 ComboBox {
   id: container
-  property int fontSize: root.font.pointSize * 0.875
+  property int fontSize: root.font.pointSize
   background: null
 
   indicator: Button {

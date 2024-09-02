@@ -5,7 +5,7 @@ import "common"
 
 ComboBox {
   id: container
-  property int fontSize: root.font.pointSize * 0.875
+  property int fontSize: root.font.pointSize
   property int optionHeight: fontSize * 3
   background: null
 
