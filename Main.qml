@@ -36,7 +36,12 @@ Pane {
   font.pointSize: config.fontSize || (height / 80)
   property string iconFont: config.iconFont || config.fontFamily
 
+  property string backgroundPath:config.background
+  property string backgroundType:config.type || "image"
+
   background: Rectangle {
+    height: root.height
+    width: root.width
     color: config.backgroundColour
 
     Image {
@@ -45,7 +50,7 @@ Pane {
       height: root.height
       width: root.width
 
-      source: config.wallpaper
+      source: backgroundType === "image" ? root.backgroundPath : config.wallpaper
       fillMode: config.boolValue("fitWallpaper") ? Image.PreserveAspectFit : Image.PreserveAspectCrop
 
       asynchronous: true
