@@ -127,7 +127,7 @@ Column {
           verticalAlignment: Text.AlignVCenter
 
           renderType: Text.QtRendering
-          text: parent.checked ? "󰈈" : "󰈉"
+          text: parent.checked ? "󰈉": "󰈈"
           font.family: iconFont
           color: root.palette.text
           opacity: parent.hovered ? 1 : 0.66
