@@ -18,6 +18,20 @@ ComboBox {
       font.family: iconFont
       color: container.focus ? root.palette.accent : root.palette.text
       font.pointSize: fontSize * 1.5
+
+      Text {
+        visible: config.boolValue("displaySession")
+        anchors {
+          leftMargin: fontSize
+          left: parent.right
+          verticalCenter: parent.verticalCenter
+        }
+        renderType: Text.QtRendering
+        text: container.currentText
+        font.family: root.font.family
+        color: root.palette.text
+        font.pointSize: fontSize
+      }
     }
 
     background: Rectangle {
