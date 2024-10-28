@@ -196,7 +196,6 @@ Pane {
           Layout.preferredHeight: parent.Layout.preferredHeight
           Layout.preferredWidth: Layout.preferredHeight
 
-          forcePowerOptions: true
           KeyNavigation.left: accessibility
         }
       }
