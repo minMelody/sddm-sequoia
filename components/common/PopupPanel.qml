@@ -9,10 +9,11 @@ Popup {
   property var model
   property Component delegate
   property bool interactive: true
-  property real maximum: 5.5
+  property real delegateHeight: fontSize * 3
+
   // maximum number of options to show at once, scroll/flick to see the rest
   // adding .5 works as a visual hint there's more options by displaying half of the next button
-  property real delegateHeight: fontSize * 3
+  property real max_size: 5.5
 
   padding: 0
   topPadding: background.radius
@@ -26,7 +27,7 @@ Popup {
   contentItem: Flickable {
     clip: true
     implicitWidth: contentWidth
-    implicitHeight: interactive ? Math.min(contentHeight, menu.maximum * (menu.delegateHeight + delegate_container.spacing)) : contentHeight
+    implicitHeight: interactive ? Math.min(contentHeight, menu.max_size * (menu.delegateHeight + delegate_container.spacing)) : contentHeight
     contentWidth: delegate_container.width
     contentHeight: delegate_container.height
 
