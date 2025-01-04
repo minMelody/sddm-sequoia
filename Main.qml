@@ -33,7 +33,7 @@ Pane {
   property bool activateVirtualKeyboard: config.boolValue("virtualKeyboardStartActive")
 
   font.family: config.fontFamily
-  font.pointSize: config.fontSize || (height / 80)
+  font.pointSize: config.fontSize || (Math.min(width, height) / 80)
   property string iconFont: config.iconFont || config.fontFamily
 
   property string backgroundType: config.type || "color"
