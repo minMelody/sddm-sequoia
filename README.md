@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> I am in the process of migrating stuff out of GitHub.<br/>
+> Active development of this theme will take place [over here](https://codeberg.org/minMelody/sddm-sequoia).
+
 # Readme
 
 Sequoia is a modern eye-candy theme for SDDM, making use of Nerd Fonts for its icons.
